@@ -1,0 +1,88 @@
+body {
+    background: #0f172a;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e2e8f0;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  #app {
+    background: #1e293b;
+    padding: 24px;
+    width: 90%;
+    max-width: 600px;
+  }
+  h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #f1f5f9;
+  }
+  button {
+    margin-right: 8px;
+    margin-top: 12px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #334155;
+    color: #f1f5f9;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  button:hover {
+    background: #475569;
+  }
+  #answer {
+    margin-top: 16px;
+    color: #cbd5e1;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .title {
+    text-align: center;
+    color: #f8fafc;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  
+  .container {
+    display: block;
+    margin: 0 auto 24px auto; /* margem inferior para separar */
+    width: 90%;
+    max-width: 700px;
+    background: #1e293b;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  }
+  
+  .footer {
+    text-align: center;
+    color: #94a3b8;
+    margin-top: 20px;
+    font-size: 14px;
+    padding: 16px 0;
+    width: 100%;
+  }
+  
+  @media (max-width: 600px) {
+    body {
+      padding: 16px; /* aumenta o padding geral no mobile */
+    }
+  
+    .container {
+      padding: 20px;
+      border-radius: 12px;
+    }
+  
+    .title {
+      font-size: 22px;
+    }
+  
+    button {
+      width: 100%;
+      margin: 8px 0;
+    }
+  }
+  
