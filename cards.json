@@ -1,709 +1,1549 @@
 [
-    {
-        "id": 0,
-        "tag": "meta",
-        "known": false,
-        "question": "Card 01 -Como usar este deck (0..100)?",
-        "answer": "Cada card tem id de 0 a 100. Revele a resposta, marque como conhecido/não conhecido e revise com repetição espaçada. Importe/exporte o JSON para suas ferramentas."
-    },
-    {
-        "id": 1,
-        "tag": "react",
-        "known": false,
-        "question": "O que é o reconciler no React e por que ele é importante?",
-        "answer": "O reconciler é o algoritmo que compara versões do Virtual DOM e decide as mudanças mínimas que devem ser aplicadas ao DOM real para refletir o novo estado da UI, aumentando eficiência de atualização."
-    },
-    {
-        "id": 2,
-        "tag": "react",
-        "known": false,
-        "question": "Explique o Virtual DOM.",
-        "answer": "Virtual DOM é uma representação leve da UI em memória; o React diffs entre versões do Virtual DOM para aplicar apenas mudanças necessárias ao DOM real, reduzindo operações caras."
-    },
-    {
-        "id": 3,
-        "tag": "react",
-        "known": false,
-        "question": "O que é um Hook no React?",
-        "answer": "Hook é uma função que permite usar estado e outros recursos do React (ex: useState, useEffect, useMemo) em componentes funcionais sem classes."
-    },
-    {
-        "id": 4,
-        "tag": "react",
-        "known": false,
-        "question": "Quando usar useMemo?",
-        "answer": "Use useMemo para memoizar valores computados caros entre renders, evitando recomputações quando dependências não mudam; não otimizar prematuramente."
-    },
-    {
-        "id": 5,
-        "tag": "react",
-        "known": false,
-        "question": "Quando usar useCallback?",
-        "answer": "useCallback memoiza uma função para manter sua referência estável entre renders, útil quando passa essa função a componentes filhos que dependem de igualdade de referência."
-    },
-    {
-        "id": 6,
-        "tag": "react",
-        "known": false,
-        "question": "Explique useEffect e seu array de dependências.",
-        "answer": "useEffect executa efeitos colaterais após o render. O array de dependências controla quando o efeito roda: vazio => only mount, com deps => quando deps mudam; retorno => limpeza no unmount/update."
-    },
-    {
-        "id": 7,
-        "tag": "react",
-        "known": false,
-        "question": "O que são Controlled e Uncontrolled Components?",
-        "answer": "Controlled: inputs cujo valor é controlado pelo state do React. Uncontrolled: DOM gerencia o valor (refs). Controlled é preferido para previsibilidade e validação."
-    },
-    {
-        "id": 8,
-        "tag": "react",
-        "known": false,
-        "question": "Por que usar keys em listas?",
-        "answer": "Keys ajudam o React a identificar itens únicos e manter estabilidade de elementos ao reordenar, evitando remounts desnecessários e bugs de estado local."
-    },
-    {
-        "id": 9,
-        "tag": "react",
-        "known": false,
-        "question": "O que é prop drilling e alternativas?",
-        "answer": "Prop drilling é passar props por múltiplos níveis. Alternativas: Context API, composição, state global (Redux/ Zustand) ou hooks de abstração."
-    },
-    {
-        "id": 10,
-        "tag": "react",
-        "known": false,
-        "question": "Explique o padrão Compound Components.",
-        "answer": "Compound components permitem uma API declarativa (pai/filho) compartilhando estado via contexto interno, oferecendo flexibilidade sem prop drilling excessivo."
-    },
-    {
-        "id": 11,
-        "tag": "nextjs",
-        "known": false,
-        "question": "O que são Server Components no Next.js?",
-        "answer": "Server Components rodam no servidor e não enviam JS ao cliente; são úteis para renderizar conteúdo estático/dinâmico sem custo de bundle no cliente."
-    },
-    {
-        "id": 12,
-        "tag": "nextjs",
-        "known": false,
-        "question": "Quando usar SSR em Next.js?",
-        "answer": "Use SSR quando precisa de dados atualizados a cada request ou depende de contexto do request (cookies, auth, personalização)."
-    },
-    {
-        "id": 13,
-        "tag": "nextjs",
-        "known": false,
-        "question": "Quando usar SSG?",
-        "answer": "SSG é ideal para páginas que podem ser geradas no build (conteúdo estático), entregando alta performance e cache CDN eficiente."
-    },
-    {
-        "id": 14,
-        "tag": "nextjs",
-        "known": false,
-        "question": "O que é ISR?",
-        "answer": "Incremental Static Regeneration permite revalidar/atualizar páginas SSG periodicamente sem rebuild completo, usando 'revalidate' para tempo em segundos."
-    },
-    {
-        "id": 15,
-        "tag": "nextjs",
-        "known": false,
-        "question": "O que são API Routes?",
-        "answer": "Rotas que expõem endpoints HTTP no próprio app Next.js (pasta /api), úteis para backend leve, webhooks e proxys sem infraestrutura separada."
-    },
-    {
-        "id": 16,
-        "tag": "nextjs",
-        "known": false,
-        "question": "Como funcionam layouts aninhados no App Router?",
-        "answer": "Layouts persistem entre navegações em sub-rotas, evitando remount e preservando estado/estrutura (ex: sidebar, header)."
-    },
-    {
-        "id": 17,
-        "tag": "nextjs",
-        "known": false,
-        "question": "O que é prefetch em Link?",
-        "answer": "Next.js pode prefetchar recursos da página alvo quando o Link entra no viewport, acelerando a navegação subsequente."
-    },
-    {
-        "id": 18,
-        "tag": "nextjs",
-        "known": false,
-        "question": "O que é Dynamic Rendering?",
-        "answer": "Configuração que força renderização server-side a cada request, ignorando cache e útil para conteúdo altamente dinâmico."
-    },
-    {
-        "id": 19,
-        "tag": "nextjs",
-        "known": false,
-        "question": "O que são Route Handlers (app/)?",
-        "answer": "Route Handlers são handlers HTTP no App Router para criar endpoints em arquivos route.js/route.ts, substituindo API routes tradicionais no app/ structure."
-    },
-    {
-        "id": 20,
-        "tag": "nextjs",
-        "known": false,
-        "question": "Como otimizar imagens em Next.js?",
-        "answer": "Use componente <Image> do Next.js, formatos modernos, sizes responsivos, lazy loading e aproveite otimizações do provedor (Vercel) ou configuração de loader."
-    },
-    {
-        "id": 21,
-        "tag": "clean-code",
-        "known": false,
-        "question": "O que é o princípio Single Responsibility?",
-        "answer": "Cada módulo/função deve ter uma única responsabilidade/razão para mudar, facilitando manutenção e testes."
-    },
-    {
-        "id": 22,
-        "tag": "clean-code",
-        "known": false,
-        "question": "O que é o princípio Open/Closed?",
-        "answer": "Entidades devem ser abertas para extensão e fechadas para modificação — usar abstrações para adicionar comportamento sem alterar código existente."
-    },
-    {
-        "id": 23,
-        "tag": "clean-code",
-        "known": false,
-        "question": "O que significa DRY?",
-        "answer": "Don’t Repeat Yourself — evitar duplicação de lógica para reduzir bugs e facilitar mudanças em um único ponto."
-    },
-    {
-        "id": 24,
-        "tag": "clean-code",
-        "known": false,
-        "question": "O que é YAGNI?",
-        "answer": "You Aren't Gonna Need It — não implementar funcionalidades antecipadas sem necessidade comprovada, reduzendo complexidade desnecessária."
-    },
-    {
-        "id": 25,
-        "tag": "clean-code",
-        "known": false,
-        "question": "Por que nomes explícitos importam?",
-        "answer": "Nomes claros reduzem necessidade de comentários, melhoram legibilidade e diminuem custo cognitivo ao ler código alheio."
-    },
-    {
-        "id": 26,
-        "tag": "architecture",
-        "known": false,
-        "question": "O que é Atomic Design?",
-        "answer": "Metodologia UI que organiza componentes em átomos, moléculas, organismos, templates e páginas para maior consistência e reutilização."
-    },
-    {
-        "id": 27,
-        "tag": "architecture",
-        "known": false,
-        "question": "Quando extrair um componente?",
-        "answer": "Extraia quando há repetição, complexidade ou responsabilidade isolada; ou quando melhorar testes e reutilização."
-    },
-    {
-        "id": 28,
-        "tag": "architecture",
-        "known": false,
-        "question": "O que é separação de preocupações?",
-        "answer": "Dividir responsabilidades (UI, state, dados, efeitos) em camadas ou módulos para reduzir acoplamento e melhorar manutenção."
-    },
-    {
-        "id": 29,
-        "tag": "architecture",
-        "known": false,
-        "question": "Como organizar pastas em projetos React/Next?",
-        "answer": "Organize por domínio/feature (feature folders) ou por tipo (components, pages, hooks). Priorize clareza e escalabilidade; defina convenções no projeto."
-    },
-    {
-        "id": 30,
-        "tag": "architecture",
-        "known": false,
-        "question": "O que é module boundary e por que importante?",
-        "answer": "Limite claro entre módulos (API pública reduzida) evita vazamento de detalhes e facilita substituição e testes."
-    },
-    {
-        "id": 31,
-        "tag": "testing",
-        "known": false,
-        "question": "Diferença entre unit, integration e e2e tests?",
-        "answer": "Unit: uma unidade isolada (função/componente). Integration: interação entre módulos. E2E: fluxo completo do usuário na aplicação real (Cypress, Playwright)."
-    },
-    {
-        "id": 32,
-        "tag": "testing",
-        "known": false,
-        "question": "O que testar com React Testing Library?",
-        "answer": "Comportamento da interface e experiência do usuário: textos, interações, acessibilidade — evitar testar implementações internas."
-    },
-    {
-        "id": 33,
-        "tag": "testing",
-        "known": false,
-        "question": "Quando usar mocks em testes?",
-        "answer": "Mockar dependências externas (API, timers, módulos) para isolar unidade sob teste e controlar cenários determinísticos."
-    },
-    {
-        "id": 34,
-        "tag": "testing",
-        "known": false,
-        "question": "O que é coverage e como interpretá-lo?",
-        "answer": "Coverage mostra porcentagem de código executado por testes. Alta cobertura é desejável, mas qualidade dos testes importa mais que número isolado."
-    },
-    {
-        "id": 35,
-        "tag": "testing",
-        "known": false,
-        "question": "Como estruturar testes em um projeto React?",
-        "answer": "Coloque testes próximos ao código (__tests__ ou ao lado dos componentes), mantenha pequenos e rápidos e use fixtures/reusuáveis helpers para setup comum."
-    },
-    {
-        "id": 36,
-        "tag": "ci/cd",
-        "known": false,
-        "question": "O que é CI e CD?",
-        "answer": "CI (Continuous Integration): integrar e testar mudanças automaticamente. CD (Continuous Delivery/Deployment): entregar/implantar builds automaticamente após aprovação ou testes."
-    },
-    {
-        "id": 37,
-        "tag": "ci/cd",
-        "known": false,
-        "question": "O que é um workflow no GitHub Actions?",
-        "answer": "Workflow é um arquivo YAML que define triggers e jobs a executar (build, test, deploy) em resposta a eventos como push ou pull_request."
-    },
-    {
-        "id": 38,
-        "tag": "ci/cd",
-        "known": false,
-        "question": "O que é job matrix?",
-        "answer": "Job matrix executa o mesmo job em múltiplas variações (ex: node versions, OS), permitindo testar compatibilidade sem duplicar código."
-    },
-    {
-        "id": 39,
-        "tag": "ci/cd",
-        "known": false,
-        "question": "Como fazer rollback seguro?",
-        "answer": "Implemente health checks e monitoramento; automatize rollback quando métricas/fails são detectados ou mantenha versões antigas prontas para redeploy imediato."
-    },
-    {
-        "id": 40,
-        "tag": "ci/cd",
-        "known": false,
-        "question": "O que é deploy canary?",
-        "answer": "Deploy gradual para um subconjunto de usuários; monitora impacto antes de liberar para todos, reduzindo risco de regressão em produção."
-    },
-    {
-        "id": 41,
-        "tag": "performance",
-        "known": false,
-        "question": "O que são Core Web Vitals?",
-        "answer": "São métricas de UX: LCP (Largest Contentful Paint), INP/FID (interatividade) e CLS (estabilidade visual). Focam em carregamento, interatividade e estabilidade visual."
-    },
-    {
-        "id": 42,
-        "tag": "performance",
-        "known": false,
-        "question": "O que é code splitting?",
-        "answer": "Dividir o bundle em partes menores carregadas sob demanda para reduzir payload inicial e acelerar tempo de carregamento."
-    },
-    {
-        "id": 43,
-        "tag": "performance",
-        "known": false,
-        "question": "O que é tree shaking?",
-        "answer": "Remoção de código não utilizado durante o bundling para reduzir o tamanho do bundle final, dependendo de módulos ES6 estáticos."
-    },
-    {
-        "id": 44,
-        "tag": "performance",
-        "known": false,
-        "question": "Como otimizar imagens?",
-        "answer": "Use formatos modernos (WebP/AVIF), redimensionamento responsivo, compressão, lazy loading e CDN/serving otimizado (Next/Image)."
-    },
-    {
-        "id": 45,
-        "tag": "performance",
-        "known": false,
-        "question": "O que é lazy loading?",
-        "answer": "Carregar recursos (imagens, componentes) apenas quando necessários, reduzindo custo inicial e melhorando percepção de velocidade."
-    },
-    {
-        "id": 46,
-        "tag": "a11y",
-        "known": false,
-        "question": "Por que semantic HTML importa para acessibilidade?",
-        "answer": "Elementos semânticos fornecem significado ao conteúdo para leitores de tela e buscadores, melhorando acessibilidade e SEO sem depender apenas de ARIA."
-    },
-    {
-        "id": 47,
-        "tag": "a11y",
-        "known": false,
-        "question": "O que é aria-label e quando usar?",
-        "answer": "aria-label descreve elementos para leitores de tela quando não há texto visível; use com parcimônia, preferindo conteúdo visível ou elementos semânticos."
-    },
-    {
-        "id": 48,
-        "tag": "a11y",
-        "known": false,
-        "question": "Como testar contraste de cores?",
-        "answer": "Use ferramentas de verificação de contraste e siga WCAG mínimo de 4.5:1 para texto normal e 3:1 para texto grande; ajuste cores ou estilos conforme necessário."
-    },
-    {
-        "id": 49,
-        "tag": "a11y",
-        "known": false,
-        "question": "O que é tabindex e cuidados?",
-        "answer": "tabindex controla ordem de navegação por teclado; misuse pode quebrar fluxo natural. Prefira evitar valores positivos; use 0 para inserir no fluxo e -1 para remoção do tab order."
-    },
-    {
-        "id": 50,
-        "tag": "a11y",
-        "known": false,
-        "question": "Como melhorar experiência para leitores de tela?",
-        "answer": "Use HTML semântico, labels claros, role/aria quando necessário, mensagens de erro acessíveis e testes com leitores de tela para fluxos críticos."
-    },
-    {
-        "id": 51,
-        "tag": "security",
-        "known": false,
-        "question": "O que é XSS e como prevenir?",
-        "answer": "Cross-site scripting permite execução de scripts maliciosos no cliente. Previna escapando conteúdo, evitando dangerouslySetInnerHTML e validando inputs no servidor."
-    },
-    {
-        "id": 52,
-        "tag": "security",
-        "known": false,
-        "question": "Como proteger tokens no front-end?",
-        "answer": "Evite armazenar tokens sensíveis em localStorage; prefira cookies HTTP-only para tokens de sessão e revogação/short-lived tokens com refresh seguro."
-    },
-    {
-        "id": 53,
-        "tag": "security",
-        "known": false,
-        "question": "O que é CSRF e mitigação?",
-        "answer": "Cross-site request forgery força ações autenticadas. Mitigue com tokens anti-CSRF, sameSite cookies e verificação de origem no servidor."
-    },
-    {
-        "id": 54,
-        "tag": "security",
-        "known": false,
-        "question": "Como validar entrada de usuário?",
-        "answer": "Valide e sanitize no servidor (trusted), e valide no cliente para melhor UX. Nunca confie apenas na validação client-side."
-    },
-    {
-        "id": 55,
-        "tag": "security",
-        "known": false,
-        "question": "O que é Content Security Policy (CSP)?",
-        "answer": "CSP é uma camada de segurança que especifica fontes permitidas de scripts, estilos e recursos, reduzindo risco de XSS e injeções."
-    },
-    {
-        "id": 56,
-        "tag": "devops",
-        "known": false,
-        "question": "O que é containerização (Docker) e por que usar?",
-        "answer": "Containerização empacota app e dependências isoladamente, garantindo replicabilidade e consistência entre ambientes, útil para CI e deploys."
-    },
-    {
-        "id": 57,
-        "tag": "devops",
-        "known": false,
-        "question": "Qual a vantagem de usar infra-as-code?",
-        "answer": "IAC (Terraform, CloudFormation) permite versionar infraestrutura, automatizar provisioning e reduzir erros manuais, aumentando reprodutibilidade."
-    },
-    {
-        "id": 58,
-        "tag": "devops",
-        "known": false,
-        "question": "O que é observability vs monitoring?",
-        "answer": "Monitoring coleta métricas/alerts. Observability é capacidade de entender sistema interno a partir de logs, traces e métricas, permitindo diagnósticos complexos."
-    },
-    {
-        "id": 59,
-        "tag": "devops",
-        "known": false,
-        "question": "Por que usar feature flags?",
-        "answer": "Feature flags permitem habilitar/desabilitar funcionalidades em runtime, possibilitando experimentação, rollout gradual e mitigação rápida de problemas."
-    },
-    {
-        "id": 60,
-        "tag": "soft-skills",
-        "known": false,
-        "question": "Como dar um code review eficaz?",
-        "answer": "Seja objetivo, foque em design e impacto, explique alternativas, cite boas práticas e deixe feedback acionável; priorize aprendizado e respeito."
-    },
-    {
-        "id": 61,
-        "tag": "soft-skills",
-        "known": false,
-        "question": "Como comunicar trade-offs técnicos a PMs?",
-        "answer": "Explique opções com impacto em tempo, custo, manutenção e risco; use dados e proponha recomendações claras alinhadas ao objetivo do produto."
-    },
-    {
-        "id": 62,
-        "tag": "soft-skills",
-        "known": false,
-        "question": "Como organizar conhecimento técnico no time?",
-        "answer": "Use documentação viva (wiki), padrões de arquitetura, exemplos de código, convenções e revisões regulares para manter consistência e onboarding eficiente."
-    },
-    {
-        "id": 63,
-        "tag": "soft-skills",
-        "known": false,
-        "question": "Como mentorar desenvolvedores juniores?",
-        "answer": "Forneça feedback construtivo, pair programming, metas claras, recursos de aprendizagem e checkpoints regulares; incentive autonomia progressiva."
-    },
-    {
-        "id": 64,
-        "tag": "algorithms",
-        "known": false,
-        "question": "Quando escolher O(n) vs O(n log n) na prática?",
-        "answer": "Prefira algoritmos mais eficientes quando dados crescentes impactam performance. O(n) escala melhor que O(n log n) em grandes volumes, mas validade depende de constantes e contexto."
-    },
-    {
-        "id": 65,
-        "tag": "frontend",
-        "known": false,
-        "question": "O que é Critical Rendering Path?",
-        "answer": "Sequência de passos para construir a primeira renderização (HTML parse, CSSOM, render tree, layout, paint). Otimizar reduz tempo até conteúdo visível."
-    },
-    {
-        "id": 66,
-        "tag": "frontend",
-        "known": false,
-        "question": "Como reduzir tempo de TTFB?",
-        "answer": "Otimizar backend, usar CDN, cache de página, reduzir redirects e servir conteúdo estático via edge/CDN para reduzir Latência.</"
-    },
-    {
-        "id": 67,
-        "tag": "frontend",
-        "known": false,
-        "question": "O que é hydration em frameworks SSR?",
-        "answer": "Hydration converte HTML estático renderizado no servidor em uma aplicação interativa no cliente, ligando event handlers e estado JS ao DOM entregue."
-    },
-    {
-        "id": 68,
-        "tag": "frontend",
-        "known": false,
-        "question": "Como monitorar performance em produção?",
-        "answer": "Colete métricas reais de usuários (RUM), Core Web Vitals, traces e defina alertas; use ferramentas como Sentry, NewRelic ou Web Vitals Reporting."
-    },
-    {
-        "id": 69,
-        "tag": "patterns",
-        "known": false,
-        "question": "O que é CQRS?",
-        "answer": "Command Query Responsibility Segregation separa operações de leitura e escrita em modelos distintos, útil para escalabilidade e performance em sistemas complexos."
-    },
-    {
-        "id": 70,
-        "tag": "patterns",
-        "known": false,
-        "question": "O que é Event Sourcing?",
-        "answer": "Persistir mudanças como uma sequência de eventos imutáveis, permitindo reconstruir estado histórico e auditabilidade."
-    },
-    {
-        "id": 71,
-        "tag": "patterns",
-        "known": false,
-        "question": "Quando preferir composição sobre herança?",
-        "answer": "Composição é preferida para flexibilidade e desacoplamento: combine comportamentos em vez de estender classes e criar hierarquias rígidas."
-    },
-    {
-        "id": 72,
-        "tag": "api",
-        "known": false,
-        "question": "Como versionar APIs sem quebrar clientes?",
-        "answer": "Use versionamento via header ou path (/v1), mantenha contratos antigos, faça migrações suaves e comunique prazos de descontinuação claramente."
-    },
-    {
-        "id": 73,
-        "tag": "api",
-        "known": false,
-        "question": "O que é idempotência em APIs?",
-        "answer": "Operações idempotentes podem ser chamadas múltiplas vezes sem alterar o resultado além da primeira execução, importante para retries seguros."
-    },
-    {
-        "id": 74,
-        "tag": "api",
-        "known": false,
-        "question": "Como proteger endpoints públicos?",
-        "answer": "Use autenticação, autorização, rate limiting, validação, logging e monitoramento; valide dados no servidor e aplique políticas de CORS quando necessário."
-    },
-    {
-        "id": 75,
-        "tag": "devtools",
-        "known": false,
-        "question": "Quais extensões DevTools ajudam na performance?",
-        "answer": "Lighthouse para auditoria, React DevTools para inspeção de componentes, Web Vitals e network panel para analisar requests e assets."
-    },
-    {
-        "id": 76,
-        "tag": "git",
-        "known": false,
-        "question": "Qual o fluxo Git ideal para times?",
-        "answer": "Fluxos populares: GitHub Flow (branch por PR), GitLab Flow ou GitFlow dependendo da maturidade; o importante é definir regras claras de branch, revisão e release."
-    },
-    {
-        "id": 77,
-        "tag": "git",
-        "known": false,
-        "question": "Como escrever bons commits?",
-        "answer": "Mensagens curtas e descritivas: cabeçalho imperativo, corpo explicando o porquê, e referencias a tickets/PRs; mantenha atomicidade nas mudanças."
-    },
-    {
-        "id": 78,
-        "tag": "ci/cd",
-        "known": false,
-        "question": "O que incluir em uma pipeline de CI para front-end?",
-        "answer": "Install, lint, unit tests, build, integration/e2e tests e publish artefatos; falhas devem bloquear merges em main/production."
-    },
-    {
-        "id": 79,
-        "tag": "testing",
-        "known": false,
-        "question": "Como testar performance regressions?",
-        "answer": "Automatize baselines com Lighthouse CI ou Puppeteer, compare resultados em CI e crie alertas para quedas de métricas importantes."
-    },
-    {
-        "id": 80,
-        "tag": "observability",
-        "known": false,
-        "question": "O que são traces distribuídos?",
-        "answer": "Traces rastreiam requests através de serviços distribuídos, mostrando latência por etapa e ajudando a identificar gargalos em arquiteturas microservices."
-    },
-    {
-        "id": 81,
-        "tag": "interview",
-        "known": false,
-        "question": "Como explicar uma decisão arquitetural em entrevista?",
-        "answer": "Contextualize o problema, apresente alternativas consideradas, diga critérios de decisão (tempo, custo, escala), e descreva resultados e trade-offs."
-    },
-    {
-        "id": 82,
-        "tag": "interview",
-        "known": false,
-        "question": "Como responder sobre um bug que você não resolveu sozinho?",
-        "answer": "Fale sobre o processo de investigação, colaboração com outros, hipóteses testadas, solução aplicada e lições aprendidas — valorize colaboração."
-    },
-    {
-        "id": 83,
-        "tag": "interview",
-        "known": false,
-        "question": "Como demonstrar liderança técnica em entrevista?",
-        "answer": "Cite exemplos de mentoria, padrões introduzidos, decisões arquiteturais e impacto no produto e no time; fale de dados/indicadores quando possível."
-    },
-    {
-        "id": 84,
-        "tag": "learning",
-        "known": false,
-        "question": "Como planejar estudos para evoluir a Senior?",
-        "answer": "Combine teoria (livros/cursos), prática (projetos reais), revisão (flashcards) e feedback (code reviews). Defina metas semanais e retroativas mensais."
-    },
-    {
-        "id": 85,
-        "tag": "learning",
-        "known": false,
-        "question": "Por que projetos práticos ajudam mais que cursos?",
-        "answer": "Projetos forçam decisões reais, trade-offs e integração de conhecimentos (arquitetura, testes, deploy), consolidando aprendizado no contexto."
-    },
-    {
-        "id": 86,
-        "tag": "react",
-        "known": false,
-        "question": "O que é hydration mismatch e como evitar?",
-        "answer": "Mismatch ocorre quando o HTML servidor diverge do que o cliente espera; evite lógica não determinística no render server e garanta dados consistentes entre server/client."
-    },
-    {
-        "id": 87,
-        "tag": "nextjs",
-        "known": false,
-        "question": "Como lidar com secrets em deploys Next.js?",
-        "answer": "Use variáveis de ambiente seguras no provedor (Vercel, Netlify) e não commit secrets no repositório; para rota handlers, armazene secrets em env vars protegidas."
-    },
-    {
-        "id": 88,
-        "tag": "performance",
-        "known": false,
-        "question": "O que é preconnect e quando usar?",
-        "answer": "preconnect instrui o browser a abrir conexões antecipadas (DNS/TCP/TLS) para domínios terceiros críticos (CDN, APIs) acelerando requests subsequentes."
-    },
-    {
-        "id": 89,
-        "tag": "a11y",
-        "known": false,
-        "question": "Como lidar com modals acessíveis?",
-        "answer": "Trape focus dentro do modal, retornar foco ao elemento disparador ao fechar, usar aria-modal e roles apropriados, e garantir leitura por leitores de tela."
-    },
-    {
-        "id": 90,
-        "tag": "testing",
-        "known": false,
-        "question": "Como escrever testes e2e resilientes?",
-        "answer": "Evite dependência de tempos fixos; use selectors robustos, setup/teardown limpos, fixtures e retry logic limitada; mantenha suites rápidas e focadas."
-    },
-    {
-        "id": 91,
-        "tag": "ci/cd",
-        "known": false,
-        "question": "Como reduzir tempo de build no CI?",
-        "answer": "Use cache de dependências, cache de build outputs, runs paralelos, e pipeline incremental; otimize steps pesados e divida jobs em etapas menores."
-    },
-    {
-        "id": 92,
-        "tag": "architecture",
-        "known": false,
-        "question": "O que é BFF (Backend For Frontend)?",
-        "answer": "Um backend específico para necessidades do frontend que agrega e adapta APIs, reduzindo lógica client-side e otimizando payloads e latência."
-    },
-    {
-        "id": 93,
-        "tag": "frontend",
-        "known": false,
-        "question": "Como gerenciar estado global com mínima complexidade?",
-        "answer": "Prefira hooks e Context para casos simples; adote libs (Zustand, Redux Toolkit) quando necessidades de previsibilidade, debug e escala aumentam."
-    },
-    {
-        "id": 94,
-        "tag": "security",
-        "known": false,
-        "question": "Por que validar no servidor mesmo com validação client-side?",
-        "answer": "Client-side melhora UX, mas é manipulável. Validação segura deve ocorrer no servidor para garantir integridade dos dados e segurança."
-    },
-    {
-        "id": 95,
-        "tag": "devops",
-        "known": false,
-        "question": "O que é infraestrutura immutable?",
-        "answer": "Pattern onde instâncias não são mutadas em produção; novas versões são provisionadas e trocadas por deploys, facilitando rollback e consistência."
-    },
-    {
-        "id": 96,
-        "tag": "git",
-        "known": false,
-        "question": "Como resolver conflitos frequentes?",
-        "answer": "Mantenha PRs pequenos e curtos, rebase/merge frequentemente, comunique mudanças de contrato e tenha convenções claras para evitar churn em arquivos compartilhados."
-    },
-    {
-        "id": 97,
-        "tag": "learning",
-        "known": false,
-        "question": "Como usar flashcards com spaced repetition?",
-        "answer": "Revise com intervalos crescentes (ex: 1d, 3d, 7d, 30d) e marque nível de dificuldade; ferramentas como Anki automatizam espaçamento baseado em performance."
-    },
-    {
-        "id": 98,
-        "tag": "interview",
-        "known": false,
-        "question": "Como preparar respostas para perguntas comportamentais?",
-        "answer": "Use STAR (Situação, Tarefa, Ação, Resultado) para estruturar histórias curtas e específicas que mostrem impacto e aprendizado."
-    },
-    {
-        "id": 99,
-        "tag": "meta",
-        "known": false,
-        "question": "Como manter o deck atualizado?",
-        "answer": "Adicione novos cards após cada estudo/retro ou entrevista; remova duplicatas, refine respostas e reimporte/exporte JSON para sincronizar entre máquinas."
-    },
-    {
-        "id": 100,
-        "tag": "interview",
-        "known": false,
-        "question": "Como responder perguntas técnicas que você não sabe?",
-        "answer": "Seja honesto, explique o que você sabe relacionado, descreva como investigaria e proponha passos concretos para aprender ou mitigar o problema."
-    }
+  {
+    "id": 0,
+    "tag": "meta",
+    "known": false,
+    "question": "Card 01 -Como usar este deck (0..100)?",
+    "answer": "Cada card tem id de 0 a 100. Revele a resposta, marque como conhecido/não conhecido e revise com repetição espaçada. Importe/exporte o JSON para suas ferramentas."
+  },
+  {
+    "id": 1,
+    "tag": "react",
+    "known": false,
+    "question": "O que é o reconciler no React e por que ele é importante?",
+    "answer": "O reconciler é o algoritmo que compara versões do Virtual DOM e decide as mudanças mínimas que devem ser aplicadas ao DOM real para refletir o novo estado da UI, aumentando eficiência de atualização."
+  },
+  {
+    "id": 2,
+    "tag": "react",
+    "known": false,
+    "question": "Explique o Virtual DOM.",
+    "answer": "Virtual DOM é uma representação leve da UI em memória; o React diffs entre versões do Virtual DOM para aplicar apenas mudanças necessárias ao DOM real, reduzindo operações caras."
+  },
+  {
+    "id": 3,
+    "tag": "react",
+    "known": false,
+    "question": "O que é um Hook no React?",
+    "answer": "Hook é uma função que permite usar estado e outros recursos do React (ex: useState, useEffect, useMemo) em componentes funcionais sem classes."
+  },
+  {
+    "id": 4,
+    "tag": "react",
+    "known": false,
+    "question": "Quando usar useMemo?",
+    "answer": "Use useMemo para memoizar valores computados caros entre renders, evitando recomputações quando dependências não mudam; não otimizar prematuramente."
+  },
+  {
+    "id": 5,
+    "tag": "react",
+    "known": false,
+    "question": "Quando usar useCallback?",
+    "answer": "useCallback memoiza uma função para manter sua referência estável entre renders, útil quando passa essa função a componentes filhos que dependem de igualdade de referência."
+  },
+  {
+    "id": 6,
+    "tag": "react",
+    "known": false,
+    "question": "Explique useEffect e seu array de dependências.",
+    "answer": "useEffect executa efeitos colaterais após o render. O array de dependências controla quando o efeito roda: vazio => only mount, com deps => quando deps mudam; retorno => limpeza no unmount/update."
+  },
+  {
+    "id": 7,
+    "tag": "react",
+    "known": false,
+    "question": "O que são Controlled e Uncontrolled Components?",
+    "answer": "Controlled: inputs cujo valor é controlado pelo state do React. Uncontrolled: DOM gerencia o valor (refs). Controlled é preferido para previsibilidade e validação."
+  },
+  {
+    "id": 8,
+    "tag": "react",
+    "known": false,
+    "question": "Por que usar keys em listas?",
+    "answer": "Keys ajudam o React a identificar itens únicos e manter estabilidade de elementos ao reordenar, evitando remounts desnecessários e bugs de estado local."
+  },
+  {
+    "id": 9,
+    "tag": "react",
+    "known": false,
+    "question": "O que é prop drilling e alternativas?",
+    "answer": "Prop drilling é passar props por múltiplos níveis. Alternativas: Context API, composição, state global (Redux/ Zustand) ou hooks de abstração."
+  },
+  {
+    "id": 10,
+    "tag": "react",
+    "known": false,
+    "question": "Explique o padrão Compound Components.",
+    "answer": "Compound components permitem uma API declarativa (pai/filho) compartilhando estado via contexto interno, oferecendo flexibilidade sem prop drilling excessivo."
+  },
+  {
+    "id": 11,
+    "tag": "nextjs",
+    "known": false,
+    "question": "O que são Server Components no Next.js?",
+    "answer": "Server Components rodam no servidor e não enviam JS ao cliente; são úteis para renderizar conteúdo estático/dinâmico sem custo de bundle no cliente."
+  },
+  {
+    "id": 12,
+    "tag": "nextjs",
+    "known": false,
+    "question": "Quando usar SSR em Next.js?",
+    "answer": "Use SSR quando precisa de dados atualizados a cada request ou depende de contexto do request (cookies, auth, personalização)."
+  },
+  {
+    "id": 13,
+    "tag": "nextjs",
+    "known": false,
+    "question": "Quando usar SSG?",
+    "answer": "SSG é ideal para páginas que podem ser geradas no build (conteúdo estático), entregando alta performance e cache CDN eficiente."
+  },
+  {
+    "id": 14,
+    "tag": "nextjs",
+    "known": false,
+    "question": "O que é ISR?",
+    "answer": "Incremental Static Regeneration permite revalidar/atualizar páginas SSG periodicamente sem rebuild completo, usando 'revalidate' para tempo em segundos."
+  },
+  {
+    "id": 15,
+    "tag": "nextjs",
+    "known": false,
+    "question": "O que são API Routes?",
+    "answer": "Rotas que expõem endpoints HTTP no próprio app Next.js (pasta /api), úteis para backend leve, webhooks e proxys sem infraestrutura separada."
+  },
+  {
+    "id": 16,
+    "tag": "nextjs",
+    "known": false,
+    "question": "Como funcionam layouts aninhados no App Router?",
+    "answer": "Layouts persistem entre navegações em sub-rotas, evitando remount e preservando estado/estrutura (ex: sidebar, header)."
+  },
+  {
+    "id": 17,
+    "tag": "nextjs",
+    "known": false,
+    "question": "O que é prefetch em Link?",
+    "answer": "Next.js pode prefetchar recursos da página alvo quando o Link entra no viewport, acelerando a navegação subsequente."
+  },
+  {
+    "id": 18,
+    "tag": "nextjs",
+    "known": false,
+    "question": "O que é Dynamic Rendering?",
+    "answer": "Configuração que força renderização server-side a cada request, ignorando cache e útil para conteúdo altamente dinâmico."
+  },
+  {
+    "id": 19,
+    "tag": "nextjs",
+    "known": false,
+    "question": "O que são Route Handlers (app/)?",
+    "answer": "Route Handlers são handlers HTTP no App Router para criar endpoints em arquivos route.js/route.ts, substituindo API routes tradicionais no app/ structure."
+  },
+  {
+    "id": 20,
+    "tag": "nextjs",
+    "known": false,
+    "question": "Como otimizar imagens em Next.js?",
+    "answer": "Use componente <Image> do Next.js, formatos modernos, sizes responsivos, lazy loading e aproveite otimizações do provedor (Vercel) ou configuração de loader."
+  },
+  {
+    "id": 21,
+    "tag": "clean-code",
+    "known": false,
+    "question": "O que é o princípio Single Responsibility?",
+    "answer": "Cada módulo/função deve ter uma única responsabilidade/razão para mudar, facilitando manutenção e testes."
+  },
+  {
+    "id": 22,
+    "tag": "clean-code",
+    "known": false,
+    "question": "O que é o princípio Open/Closed?",
+    "answer": "Entidades devem ser abertas para extensão e fechadas para modificação — usar abstrações para adicionar comportamento sem alterar código existente."
+  },
+  {
+    "id": 23,
+    "tag": "clean-code",
+    "known": false,
+    "question": "O que significa DRY?",
+    "answer": "Don’t Repeat Yourself — evitar duplicação de lógica para reduzir bugs e facilitar mudanças em um único ponto."
+  },
+  {
+    "id": 24,
+    "tag": "clean-code",
+    "known": false,
+    "question": "O que é YAGNI?",
+    "answer": "You Aren't Gonna Need It — não implementar funcionalidades antecipadas sem necessidade comprovada, reduzendo complexidade desnecessária."
+  },
+  {
+    "id": 25,
+    "tag": "clean-code",
+    "known": false,
+    "question": "Por que nomes explícitos importam?",
+    "answer": "Nomes claros reduzem necessidade de comentários, melhoram legibilidade e diminuem custo cognitivo ao ler código alheio."
+  },
+  {
+    "id": 26,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que é Atomic Design?",
+    "answer": "Metodologia UI que organiza componentes em átomos, moléculas, organismos, templates e páginas para maior consistência e reutilização."
+  },
+  {
+    "id": 27,
+    "tag": "architecture",
+    "known": false,
+    "question": "Quando extrair um componente?",
+    "answer": "Extraia quando há repetição, complexidade ou responsabilidade isolada; ou quando melhorar testes e reutilização."
+  },
+  {
+    "id": 28,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que é separação de preocupações?",
+    "answer": "Dividir responsabilidades (UI, state, dados, efeitos) em camadas ou módulos para reduzir acoplamento e melhorar manutenção."
+  },
+  {
+    "id": 29,
+    "tag": "architecture",
+    "known": false,
+    "question": "Como organizar pastas em projetos React/Next?",
+    "answer": "Organize por domínio/feature (feature folders) ou por tipo (components, pages, hooks). Priorize clareza e escalabilidade; defina convenções no projeto."
+  },
+  {
+    "id": 30,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que é module boundary e por que importante?",
+    "answer": "Limite claro entre módulos (API pública reduzida) evita vazamento de detalhes e facilita substituição e testes."
+  },
+  {
+    "id": 31,
+    "tag": "testing",
+    "known": false,
+    "question": "Diferença entre unit, integration e e2e tests?",
+    "answer": "Unit: uma unidade isolada (função/componente). Integration: interação entre módulos. E2E: fluxo completo do usuário na aplicação real (Cypress, Playwright)."
+  },
+  {
+    "id": 32,
+    "tag": "testing",
+    "known": false,
+    "question": "O que testar com React Testing Library?",
+    "answer": "Comportamento da interface e experiência do usuário: textos, interações, acessibilidade — evitar testar implementações internas."
+  },
+  {
+    "id": 33,
+    "tag": "testing",
+    "known": false,
+    "question": "Quando usar mocks em testes?",
+    "answer": "Mockar dependências externas (API, timers, módulos) para isolar unidade sob teste e controlar cenários determinísticos."
+  },
+  {
+    "id": 34,
+    "tag": "testing",
+    "known": false,
+    "question": "O que é coverage e como interpretá-lo?",
+    "answer": "Coverage mostra porcentagem de código executado por testes. Alta cobertura é desejável, mas qualidade dos testes importa mais que número isolado."
+  },
+  {
+    "id": 35,
+    "tag": "testing",
+    "known": false,
+    "question": "Como estruturar testes em um projeto React?",
+    "answer": "Coloque testes próximos ao código (__tests__ ou ao lado dos componentes), mantenha pequenos e rápidos e use fixtures/reusuáveis helpers para setup comum."
+  },
+  {
+    "id": 36,
+    "tag": "ci/cd",
+    "known": false,
+    "question": "O que é CI e CD?",
+    "answer": "CI (Continuous Integration): integrar e testar mudanças automaticamente. CD (Continuous Delivery/Deployment): entregar/implantar builds automaticamente após aprovação ou testes."
+  },
+  {
+    "id": 37,
+    "tag": "ci/cd",
+    "known": false,
+    "question": "O que é um workflow no GitHub Actions?",
+    "answer": "Workflow é um arquivo YAML que define triggers e jobs a executar (build, test, deploy) em resposta a eventos como push ou pull_request."
+  },
+  {
+    "id": 38,
+    "tag": "ci/cd",
+    "known": false,
+    "question": "O que é job matrix?",
+    "answer": "Job matrix executa o mesmo job em múltiplas variações (ex: node versions, OS), permitindo testar compatibilidade sem duplicar código."
+  },
+  {
+    "id": 39,
+    "tag": "ci/cd",
+    "known": false,
+    "question": "Como fazer rollback seguro?",
+    "answer": "Implemente health checks e monitoramento; automatize rollback quando métricas/fails são detectados ou mantenha versões antigas prontas para redeploy imediato."
+  },
+  {
+    "id": 40,
+    "tag": "ci/cd",
+    "known": false,
+    "question": "O que é deploy canary?",
+    "answer": "Deploy gradual para um subconjunto de usuários; monitora impacto antes de liberar para todos, reduzindo risco de regressão em produção."
+  },
+  {
+    "id": 41,
+    "tag": "performance",
+    "known": false,
+    "question": "O que são Core Web Vitals?",
+    "answer": "São métricas de UX: LCP (Largest Contentful Paint), INP/FID (interatividade) e CLS (estabilidade visual). Focam em carregamento, interatividade e estabilidade visual."
+  },
+  {
+    "id": 42,
+    "tag": "performance",
+    "known": false,
+    "question": "O que é code splitting?",
+    "answer": "Dividir o bundle em partes menores carregadas sob demanda para reduzir payload inicial e acelerar tempo de carregamento."
+  },
+  {
+    "id": 43,
+    "tag": "performance",
+    "known": false,
+    "question": "O que é tree shaking?",
+    "answer": "Remoção de código não utilizado durante o bundling para reduzir o tamanho do bundle final, dependendo de módulos ES6 estáticos."
+  },
+  {
+    "id": 44,
+    "tag": "performance",
+    "known": false,
+    "question": "Como otimizar imagens?",
+    "answer": "Use formatos modernos (WebP/AVIF), redimensionamento responsivo, compressão, lazy loading e CDN/serving otimizado (Next/Image)."
+  },
+  {
+    "id": 45,
+    "tag": "performance",
+    "known": false,
+    "question": "O que é lazy loading?",
+    "answer": "Carregar recursos (imagens, componentes) apenas quando necessários, reduzindo custo inicial e melhorando percepção de velocidade."
+  },
+  {
+    "id": 46,
+    "tag": "a11y",
+    "known": false,
+    "question": "Por que semantic HTML importa para acessibilidade?",
+    "answer": "Elementos semânticos fornecem significado ao conteúdo para leitores de tela e buscadores, melhorando acessibilidade e SEO sem depender apenas de ARIA."
+  },
+  {
+    "id": 47,
+    "tag": "a11y",
+    "known": false,
+    "question": "O que é aria-label e quando usar?",
+    "answer": "aria-label descreve elementos para leitores de tela quando não há texto visível; use com parcimônia, preferindo conteúdo visível ou elementos semânticos."
+  },
+  {
+    "id": 48,
+    "tag": "a11y",
+    "known": false,
+    "question": "Como testar contraste de cores?",
+    "answer": "Use ferramentas de verificação de contraste e siga WCAG mínimo de 4.5:1 para texto normal e 3:1 para texto grande; ajuste cores ou estilos conforme necessário."
+  },
+  {
+    "id": 49,
+    "tag": "a11y",
+    "known": false,
+    "question": "O que é tabindex e cuidados?",
+    "answer": "tabindex controla ordem de navegação por teclado; misuse pode quebrar fluxo natural. Prefira evitar valores positivos; use 0 para inserir no fluxo e -1 para remoção do tab order."
+  },
+  {
+    "id": 50,
+    "tag": "a11y",
+    "known": false,
+    "question": "Como melhorar experiência para leitores de tela?",
+    "answer": "Use HTML semântico, labels claros, role/aria quando necessário, mensagens de erro acessíveis e testes com leitores de tela para fluxos críticos."
+  },
+  {
+    "id": 51,
+    "tag": "security",
+    "known": false,
+    "question": "O que é XSS e como prevenir?",
+    "answer": "Cross-site scripting permite execução de scripts maliciosos no cliente. Previna escapando conteúdo, evitando dangerouslySetInnerHTML e validando inputs no servidor."
+  },
+  {
+    "id": 52,
+    "tag": "security",
+    "known": false,
+    "question": "Como proteger tokens no front-end?",
+    "answer": "Evite armazenar tokens sensíveis em localStorage; prefira cookies HTTP-only para tokens de sessão e revogação/short-lived tokens com refresh seguro."
+  },
+  {
+    "id": 53,
+    "tag": "security",
+    "known": false,
+    "question": "O que é CSRF e mitigação?",
+    "answer": "Cross-site request forgery força ações autenticadas. Mitigue com tokens anti-CSRF, sameSite cookies e verificação de origem no servidor."
+  },
+  {
+    "id": 54,
+    "tag": "security",
+    "known": false,
+    "question": "Como validar entrada de usuário?",
+    "answer": "Valide e sanitize no servidor (trusted), e valide no cliente para melhor UX. Nunca confie apenas na validação client-side."
+  },
+  {
+    "id": 55,
+    "tag": "security",
+    "known": false,
+    "question": "O que é Content Security Policy (CSP)?",
+    "answer": "CSP é uma camada de segurança que especifica fontes permitidas de scripts, estilos e recursos, reduzindo risco de XSS e injeções."
+  },
+  {
+    "id": 56,
+    "tag": "devops",
+    "known": false,
+    "question": "O que é containerização (Docker) e por que usar?",
+    "answer": "Containerização empacota app e dependências isoladamente, garantindo replicabilidade e consistência entre ambientes, útil para CI e deploys."
+  },
+  {
+    "id": 57,
+    "tag": "devops",
+    "known": false,
+    "question": "Qual a vantagem de usar infra-as-code?",
+    "answer": "IAC (Terraform, CloudFormation) permite versionar infraestrutura, automatizar provisioning e reduzir erros manuais, aumentando reprodutibilidade."
+  },
+  {
+    "id": 58,
+    "tag": "devops",
+    "known": false,
+    "question": "O que é observability vs monitoring?",
+    "answer": "Monitoring coleta métricas/alerts. Observability é capacidade de entender sistema interno a partir de logs, traces e métricas, permitindo diagnósticos complexos."
+  },
+  {
+    "id": 59,
+    "tag": "devops",
+    "known": false,
+    "question": "Por que usar feature flags?",
+    "answer": "Feature flags permitem habilitar/desabilitar funcionalidades em runtime, possibilitando experimentação, rollout gradual e mitigação rápida de problemas."
+  },
+  {
+    "id": 60,
+    "tag": "soft-skills",
+    "known": false,
+    "question": "Como dar um code review eficaz?",
+    "answer": "Seja objetivo, foque em design e impacto, explique alternativas, cite boas práticas e deixe feedback acionável; priorize aprendizado e respeito."
+  },
+  {
+    "id": 61,
+    "tag": "soft-skills",
+    "known": false,
+    "question": "Como comunicar trade-offs técnicos a PMs?",
+    "answer": "Explique opções com impacto em tempo, custo, manutenção e risco; use dados e proponha recomendações claras alinhadas ao objetivo do produto."
+  },
+  {
+    "id": 62,
+    "tag": "soft-skills",
+    "known": false,
+    "question": "Como organizar conhecimento técnico no time?",
+    "answer": "Use documentação viva (wiki), padrões de arquitetura, exemplos de código, convenções e revisões regulares para manter consistência e onboarding eficiente."
+  },
+  {
+    "id": 63,
+    "tag": "soft-skills",
+    "known": false,
+    "question": "Como mentorar desenvolvedores juniores?",
+    "answer": "Forneça feedback construtivo, pair programming, metas claras, recursos de aprendizagem e checkpoints regulares; incentive autonomia progressiva."
+  },
+  {
+    "id": 64,
+    "tag": "algorithms",
+    "known": false,
+    "question": "Quando escolher O(n) vs O(n log n) na prática?",
+    "answer": "Prefira algoritmos mais eficientes quando dados crescentes impactam performance. O(n) escala melhor que O(n log n) em grandes volumes, mas validade depende de constantes e contexto."
+  },
+  {
+    "id": 65,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é Critical Rendering Path?",
+    "answer": "Sequência de passos para construir a primeira renderização (HTML parse, CSSOM, render tree, layout, paint). Otimizar reduz tempo até conteúdo visível."
+  },
+  {
+    "id": 66,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como reduzir tempo de TTFB?",
+    "answer": "Otimizar backend, usar CDN, cache de página, reduzir redirects e servir conteúdo estático via edge/CDN para reduzir Latência.</"
+  },
+  {
+    "id": 67,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é hydration em frameworks SSR?",
+    "answer": "Hydration converte HTML estático renderizado no servidor em uma aplicação interativa no cliente, ligando event handlers e estado JS ao DOM entregue."
+  },
+  {
+    "id": 68,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como monitorar performance em produção?",
+    "answer": "Colete métricas reais de usuários (RUM), Core Web Vitals, traces e defina alertas; use ferramentas como Sentry, NewRelic ou Web Vitals Reporting."
+  },
+  {
+    "id": 69,
+    "tag": "patterns",
+    "known": false,
+    "question": "O que é CQRS?",
+    "answer": "Command Query Responsibility Segregation separa operações de leitura e escrita em modelos distintos, útil para escalabilidade e performance em sistemas complexos."
+  },
+  {
+    "id": 70,
+    "tag": "patterns",
+    "known": false,
+    "question": "O que é Event Sourcing?",
+    "answer": "Persistir mudanças como uma sequência de eventos imutáveis, permitindo reconstruir estado histórico e auditabilidade."
+  },
+  {
+    "id": 71,
+    "tag": "patterns",
+    "known": false,
+    "question": "Quando preferir composição sobre herança?",
+    "answer": "Composição é preferida para flexibilidade e desacoplamento: combine comportamentos em vez de estender classes e criar hierarquias rígidas."
+  },
+  {
+    "id": 72,
+    "tag": "api",
+    "known": false,
+    "question": "Como versionar APIs sem quebrar clientes?",
+    "answer": "Use versionamento via header ou path (/v1), mantenha contratos antigos, faça migrações suaves e comunique prazos de descontinuação claramente."
+  },
+  {
+    "id": 73,
+    "tag": "api",
+    "known": false,
+    "question": "O que é idempotência em APIs?",
+    "answer": "Operações idempotentes podem ser chamadas múltiplas vezes sem alterar o resultado além da primeira execução, importante para retries seguros."
+  },
+  {
+    "id": 74,
+    "tag": "api",
+    "known": false,
+    "question": "Como proteger endpoints públicos?",
+    "answer": "Use autenticação, autorização, rate limiting, validação, logging e monitoramento; valide dados no servidor e aplique políticas de CORS quando necessário."
+  },
+  {
+    "id": 75,
+    "tag": "devtools",
+    "known": false,
+    "question": "Quais extensões DevTools ajudam na performance?",
+    "answer": "Lighthouse para auditoria, React DevTools para inspeção de componentes, Web Vitals e network panel para analisar requests e assets."
+  },
+  {
+    "id": 76,
+    "tag": "git",
+    "known": false,
+    "question": "Qual o fluxo Git ideal para times?",
+    "answer": "Fluxos populares: GitHub Flow (branch por PR), GitLab Flow ou GitFlow dependendo da maturidade; o importante é definir regras claras de branch, revisão e release."
+  },
+  {
+    "id": 77,
+    "tag": "git",
+    "known": false,
+    "question": "Como escrever bons commits?",
+    "answer": "Mensagens curtas e descritivas: cabeçalho imperativo, corpo explicando o porquê, e referencias a tickets/PRs; mantenha atomicidade nas mudanças."
+  },
+  {
+    "id": 78,
+    "tag": "ci/cd",
+    "known": false,
+    "question": "O que incluir em uma pipeline de CI para front-end?",
+    "answer": "Install, lint, unit tests, build, integration/e2e tests e publish artefatos; falhas devem bloquear merges em main/production."
+  },
+  {
+    "id": 79,
+    "tag": "testing",
+    "known": false,
+    "question": "Como testar performance regressions?",
+    "answer": "Automatize baselines com Lighthouse CI ou Puppeteer, compare resultados em CI e crie alertas para quedas de métricas importantes."
+  },
+  {
+    "id": 80,
+    "tag": "observability",
+    "known": false,
+    "question": "O que são traces distribuídos?",
+    "answer": "Traces rastreiam requests através de serviços distribuídos, mostrando latência por etapa e ajudando a identificar gargalos em arquiteturas microservices."
+  },
+  {
+    "id": 81,
+    "tag": "interview",
+    "known": false,
+    "question": "Como explicar uma decisão arquitetural em entrevista?",
+    "answer": "Contextualize o problema, apresente alternativas consideradas, diga critérios de decisão (tempo, custo, escala), e descreva resultados e trade-offs."
+  },
+  {
+    "id": 82,
+    "tag": "interview",
+    "known": false,
+    "question": "Como responder sobre um bug que você não resolveu sozinho?",
+    "answer": "Fale sobre o processo de investigação, colaboração com outros, hipóteses testadas, solução aplicada e lições aprendidas — valorize colaboração."
+  },
+  {
+    "id": 83,
+    "tag": "interview",
+    "known": false,
+    "question": "Como demonstrar liderança técnica em entrevista?",
+    "answer": "Cite exemplos de mentoria, padrões introduzidos, decisões arquiteturais e impacto no produto e no time; fale de dados/indicadores quando possível."
+  },
+  {
+    "id": 84,
+    "tag": "learning",
+    "known": false,
+    "question": "Como planejar estudos para evoluir a Senior?",
+    "answer": "Combine teoria (livros/cursos), prática (projetos reais), revisão (flashcards) e feedback (code reviews). Defina metas semanais e retroativas mensais."
+  },
+  {
+    "id": 85,
+    "tag": "learning",
+    "known": false,
+    "question": "Por que projetos práticos ajudam mais que cursos?",
+    "answer": "Projetos forçam decisões reais, trade-offs e integração de conhecimentos (arquitetura, testes, deploy), consolidando aprendizado no contexto."
+  },
+  {
+    "id": 86,
+    "tag": "react",
+    "known": false,
+    "question": "O que é hydration mismatch e como evitar?",
+    "answer": "Mismatch ocorre quando o HTML servidor diverge do que o cliente espera; evite lógica não determinística no render server e garanta dados consistentes entre server/client."
+  },
+  {
+    "id": 87,
+    "tag": "nextjs",
+    "known": false,
+    "question": "Como lidar com secrets em deploys Next.js?",
+    "answer": "Use variáveis de ambiente seguras no provedor (Vercel, Netlify) e não commit secrets no repositório; para rota handlers, armazene secrets em env vars protegidas."
+  },
+  {
+    "id": 88,
+    "tag": "performance",
+    "known": false,
+    "question": "O que é preconnect e quando usar?",
+    "answer": "preconnect instrui o browser a abrir conexões antecipadas (DNS/TCP/TLS) para domínios terceiros críticos (CDN, APIs) acelerando requests subsequentes."
+  },
+  {
+    "id": 89,
+    "tag": "a11y",
+    "known": false,
+    "question": "Como lidar com modals acessíveis?",
+    "answer": "Trape focus dentro do modal, retornar foco ao elemento disparador ao fechar, usar aria-modal e roles apropriados, e garantir leitura por leitores de tela."
+  },
+  {
+    "id": 90,
+    "tag": "testing",
+    "known": false,
+    "question": "Como escrever testes e2e resilientes?",
+    "answer": "Evite dependência de tempos fixos; use selectors robustos, setup/teardown limpos, fixtures e retry logic limitada; mantenha suites rápidas e focadas."
+  },
+  {
+    "id": 91,
+    "tag": "ci/cd",
+    "known": false,
+    "question": "Como reduzir tempo de build no CI?",
+    "answer": "Use cache de dependências, cache de build outputs, runs paralelos, e pipeline incremental; otimize steps pesados e divida jobs em etapas menores."
+  },
+  {
+    "id": 92,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que é BFF (Backend For Frontend)?",
+    "answer": "Um backend específico para necessidades do frontend que agrega e adapta APIs, reduzindo lógica client-side e otimizando payloads e latência."
+  },
+  {
+    "id": 93,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como gerenciar estado global com mínima complexidade?",
+    "answer": "Prefira hooks e Context para casos simples; adote libs (Zustand, Redux Toolkit) quando necessidades de previsibilidade, debug e escala aumentam."
+  },
+  {
+    "id": 94,
+    "tag": "security",
+    "known": false,
+    "question": "Por que validar no servidor mesmo com validação client-side?",
+    "answer": "Client-side melhora UX, mas é manipulável. Validação segura deve ocorrer no servidor para garantir integridade dos dados e segurança."
+  },
+  {
+    "id": 95,
+    "tag": "devops",
+    "known": false,
+    "question": "O que é infraestrutura immutable?",
+    "answer": "Pattern onde instâncias não são mutadas em produção; novas versões são provisionadas e trocadas por deploys, facilitando rollback e consistência."
+  },
+  {
+    "id": 96,
+    "tag": "git",
+    "known": false,
+    "question": "Como resolver conflitos frequentes?",
+    "answer": "Mantenha PRs pequenos e curtos, rebase/merge frequentemente, comunique mudanças de contrato e tenha convenções claras para evitar churn em arquivos compartilhados."
+  },
+  {
+    "id": 97,
+    "tag": "learning",
+    "known": false,
+    "question": "Como usar flashcards com spaced repetition?",
+    "answer": "Revise com intervalos crescentes (ex: 1d, 3d, 7d, 30d) e marque nível de dificuldade; ferramentas como Anki automatizam espaçamento baseado em performance."
+  },
+  {
+    "id": 98,
+    "tag": "interview",
+    "known": false,
+    "question": "Como preparar respostas para perguntas comportamentais?",
+    "answer": "Use STAR (Situação, Tarefa, Ação, Resultado) para estruturar histórias curtas e específicas que mostrem impacto e aprendizado."
+  },
+  {
+    "id": 99,
+    "tag": "meta",
+    "known": false,
+    "question": "Como manter o deck atualizado?",
+    "answer": "Adicione novos cards após cada estudo/retro ou entrevista; remova duplicatas, refine respostas e reimporte/exporte JSON para sincronizar entre máquinas."
+  },
+  {
+    "id": 100,
+    "tag": "interview",
+    "known": false,
+    "question": "Como responder perguntas técnicas que você não sabe?",
+    "answer": "Seja honesto, explique o que você sabe relacionado, descreva como investigaria e proponha passos concretos para aprender ou mitigar o problema."
+  },
+  {
+    "id": 101,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que é Atomic Design?",
+    "answer": "É uma metodologia que organiza UI em átomos, moléculas, organismos, templates e páginas."
+  },
+  {
+    "id": 102,
+    "tag": "architecture",
+    "known": false,
+    "question": "Por que Atomic Design melhora escalabilidade?",
+    "answer": "Porque torna componentes reutilizáveis, padronizados e fáceis de manter."
+  },
+  {
+    "id": 103,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que são átomos no Atomic Design?",
+    "answer": "Elementos básicos como Input, Label e Button."
+  },
+  {
+    "id": 104,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que são moléculas no Atomic Design?",
+    "answer": "Combinação de átomos que formam blocos funcionais."
+  },
+  {
+    "id": 105,
+    "tag": "architecture",
+    "known": false,
+    "question": "Quando criar uma molécula?",
+    "answer": "Quando uma combinação de átomos é reutilizada em mais de um lugar."
+  },
+  {
+    "id": 106,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que são organismos no Atomic Design?",
+    "answer": "Combinações grandes e estruturais compostas de moléculas e átomos."
+  },
+  {
+    "id": 107,
+    "tag": "architecture",
+    "known": false,
+    "question": "Para que serve o arquivo index.ts em componentes?",
+    "answer": "Para centralizar exports e simplificar imports."
+  },
+  {
+    "id": 108,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que é um barrel file?",
+    "answer": "Um arquivo index que reexporta componentes, facilitando importações."
+  },
+  {
+    "id": 109,
+    "tag": "architecture",
+    "known": false,
+    "question": "Por que usar caminhos absolutos como @/?",
+    "answer": "Para melhorar organização e evitar imports relativos longos."
+  },
+  {
+    "id": 110,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que é um componente dumb?",
+    "answer": "Componente somente de UI, sem lógica interna."
+  },
+  {
+    "id": 111,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que é um componente smart?",
+    "answer": "Componente que possui lógica, estados e comunicação com APIs."
+  },
+  {
+    "id": 112,
+    "tag": "architecture",
+    "known": false,
+    "question": "Por que iniciar um projeto com padrões sólidos?",
+    "answer": "Para evitar refatorações grandes e manter consistência."
+  },
+  {
+    "id": 113,
+    "tag": "architecture",
+    "known": false,
+    "question": "Qual é a vantagem de separar UI e lógica?",
+    "answer": "Melhora testabilidade e reaproveitamento de código."
+  },
+  {
+    "id": 114,
+    "tag": "typescript",
+    "known": false,
+    "question": "Por que usar TypeScript desde o início do projeto?",
+    "answer": "Para aumentar segurança e detectar erros em tempo de desenvolvimento."
+  },
+  {
+    "id": 115,
+    "tag": "ui",
+    "known": false,
+    "question": "O que define um 'Input' atômico bem implementado?",
+    "answer": "Ser reutilizável, personalizável por props e sem lógica acoplada."
+  },
+  {
+    "id": 116,
+    "tag": "architecture",
+    "known": false,
+    "question": "Quando criar um átomo novo?",
+    "answer": "Quando há um elemento simples reutilizável em várias partes do app."
+  },
+  {
+    "id": 117,
+    "tag": "architecture",
+    "known": false,
+    "question": "Quando criar um organismo?",
+    "answer": "Quando combinações de moléculas começam a se repetir."
+  },
+  {
+    "id": 118,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que é separação de responsabilidades?",
+    "answer": "Dividir o código por função clara, evitando acoplamento."
+  },
+  {
+    "id": 119,
+    "tag": "architecture",
+    "known": false,
+    "question": "O que é UI Kit interno?",
+    "answer": "Conjunto de componentes padronizados compartilhados no projeto."
+  },
+  {
+    "id": 120,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que evitar abstrações prematuras?",
+    "answer": "Porque criam complexidade desnecessária sem benefício real."
+  },
+  {
+    "id": 121,
+    "tag": "frontend",
+    "known": false,
+    "question": "Quando extrair um componente?",
+    "answer": "Quando há repetição ou responsabilidade própria clara."
+  },
+  {
+    "id": 122,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que padronizar nomenclatura?",
+    "answer": "Para facilitar busca e colaboração no projeto."
+  },
+  {
+    "id": 123,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que organizar pastas por domínio é útil?",
+    "answer": "Porque reduz desacoplamento e facilita manutenção."
+  },
+  {
+    "id": 124,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é DX (Developer Experience)?",
+    "answer": "A facilidade e fluidez com que desenvolvedores trabalham no projeto."
+  },
+  {
+    "id": 125,
+    "tag": "frontend",
+    "known": false,
+    "question": "Quando criar templates no Atomic Design?",
+    "answer": "Ao estruturar páginas sem dados reais."
+  },
+  {
+    "id": 126,
+    "tag": "css",
+    "known": false,
+    "question": "Por que manter design tokens?",
+    "answer": "Para garantir escalabilidade e consistência visual."
+  },
+  {
+    "id": 127,
+    "tag": "css",
+    "known": false,
+    "question": "Como garantir consistência visual?",
+    "answer": "Usando tokens, variáveis e componentes base."
+  },
+  {
+    "id": 128,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é um layout baseado em UI escalável?",
+    "answer": "Um layout modular, onde peças são reusadas entre páginas."
+  },
+  {
+    "id": 129,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que centralizar estilos em classes utilitárias?",
+    "answer": "Para criar padronização e evitar duplicação."
+  },
+  {
+    "id": 130,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que separar categorias de componentes?",
+    "answer": "Para melhorar localização e leitura do código."
+  },
+  {
+    "id": 131,
+    "tag": "nextjs",
+    "known": false,
+    "question": "O que causa hydration mismatch?",
+    "answer": "Diferença entre HTML do servidor e HTML do cliente."
+  },
+  {
+    "id": 132,
+    "tag": "nextjs",
+    "known": false,
+    "question": "Quais funções geram mismatch facilmente?",
+    "answer": "Math.random(), Date.now(), window, locale format."
+  },
+  {
+    "id": 133,
+    "tag": "nextjs",
+    "known": false,
+    "question": "Como evitar hydration mismatch?",
+    "answer": "Garantindo que o HTML seja determinístico no server e no client."
+  },
+  {
+    "id": 134,
+    "tag": "css",
+    "known": false,
+    "question": "Como estilizar input:focus?",
+    "answer": "Usando outline, border-color e box-shadow."
+  },
+  {
+    "id": 135,
+    "tag": "css",
+    "known": false,
+    "question": "Como remover a cor preta padrão no focus do input?",
+    "answer": "Sobrescrevendo outline e adicionando border personalizada."
+  },
+  {
+    "id": 136,
+    "tag": "react",
+    "known": false,
+    "question": "O que é um controlled input?",
+    "answer": "Um input cujo valor é controlado pelo estado React."
+  },
+  {
+    "id": 137,
+    "tag": "react",
+    "known": false,
+    "question": "O que é uncontrolled input?",
+    "answer": "Input que controla seu próprio valor via DOM."
+  },
+  {
+    "id": 138,
+    "tag": "react",
+    "known": false,
+    "question": "Por que usar forwardRef em inputs?",
+    "answer": "Para permitir foco e manipulação pelo componente pai."
+  },
+  {
+    "id": 139,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como testar focus em React Testing Library?",
+    "answer": "Simulando input.focus() e verificando estilo aplicado."
+  },
+  {
+    "id": 140,
+    "tag": "nextjs",
+    "known": false,
+    "question": "Como identificar hydration mismatch no console?",
+    "answer": "Next.js emite warnings de 'content mismatch'."
+  },
+  {
+    "id": 141,
+    "tag": "nextjs",
+    "known": false,
+    "question": "Por que SSR exige determinismo?",
+    "answer": "Para garantir que o HTML gerado seja idêntico nos dois lados."
+  },
+  {
+    "id": 142,
+    "tag": "css",
+    "known": false,
+    "question": "O que faz :focus-visible?",
+    "answer": "Mostra o foco apenas ao usar teclado."
+  },
+  {
+    "id": 143,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é UI State Drift?",
+    "answer": "Quando UI e estado real não estão sincronizados."
+  },
+  {
+    "id": 144,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como evitar flicker visual em hydration?",
+    "answer": "Evitar valores dinâmicos no SSR."
+  },
+  {
+    "id": 145,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como testar hydration issues localmente?",
+    "answer": "Rodando o build real com npm run build."
+  },
+  {
+    "id": 146,
+    "tag": "css",
+    "known": false,
+    "question": "Como estilizar placeholders?",
+    "answer": "Usando a pseudo-classe ::placeholder."
+  },
+  {
+    "id": 147,
+    "tag": "react",
+    "known": false,
+    "question": "Por que evitar lógica condicional com window em SSR?",
+    "answer": "Porque window não existe no servidor."
+  },
+  {
+    "id": 148,
+    "tag": "css",
+    "known": false,
+    "question": "Por que evitar estilos inline dinâmicos em SSR?",
+    "answer": "Eles podem alterar entre server e client, causando mismatch."
+  },
+  {
+    "id": 149,
+    "tag": "nextjs",
+    "known": false,
+    "question": "O que é pre-render?",
+    "answer": "Geração inicial do HTML antes de ser servido."
+  },
+  {
+    "id": 150,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é layout shift?",
+    "answer": "Mudança inesperada no layout após render."
+  },
+  {
+    "id": 151,
+    "tag": "css",
+    "known": false,
+    "question": "O que é mobile-first?",
+    "answer": "Estilo iniciado para telas pequenas, escalando com media queries."
+  },
+  {
+    "id": 152,
+    "tag": "css",
+    "known": false,
+    "question": "Como centralizar tudo no mobile?",
+    "answer": "Usando display: flex; flex-direction: column; align-items: center."
+  },
+  {
+    "id": 153,
+    "tag": "css",
+    "known": false,
+    "question": "Como adicionar padding global?",
+    "answer": "Adicionando padding direto no body."
+  },
+  {
+    "id": 154,
+    "tag": "css",
+    "known": false,
+    "question": "Como alinhar containers em coluna?",
+    "answer": "Com flex-direction: column."
+  },
+  {
+    "id": 155,
+    "tag": "css",
+    "known": false,
+    "question": "Por que usar max-width em containers?",
+    "answer": "Para manter o conteúdo legível em telas largas."
+  },
+  {
+    "id": 156,
+    "tag": "css",
+    "known": false,
+    "question": "Como remover margens default do body?",
+    "answer": "body { margin: 0; }"
+  },
+  {
+    "id": 157,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é box model?",
+    "answer": "Modelo que define padding, border, margin e content."
+  },
+  {
+    "id": 158,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que usar rem ao invés de px?",
+    "answer": "Porque rem é responsivo com base no tamanho da raiz."
+  },
+  {
+    "id": 159,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é utility class?",
+    "answer": "Classe com uma única responsabilidade visual."
+  },
+  {
+    "id": 160,
+    "tag": "css",
+    "known": false,
+    "question": "O que é um CSS reset?",
+    "answer": "Uma base para padronizar estilos entre navegadores."
+  },
+  {
+    "id": 161,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é grid layout?",
+    "answer": "Sistema bidimensional de layout usando colunas e linhas."
+  },
+  {
+    "id": 162,
+    "tag": "frontend",
+    "known": false,
+    "question": "Quando usar flexbox?",
+    "answer": "Para layouts lineares e de fácil alinhamento."
+  },
+  {
+    "id": 163,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é spacing scale?",
+    "answer": "Uma escala padronizada para espaçamentos."
+  },
+  {
+    "id": 164,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é typography scale?",
+    "answer": "Escala de tamanhos de fonte para padronização."
+  },
+  {
+    "id": 165,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como evitar CSS Spaghetti?",
+    "answer": "Criando componentes pequenos e classes bem nomeadas."
+  },
+  {
+    "id": 166,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é BEM?",
+    "answer": "Bloco Elemento Modificador — padrão de nomeação CSS."
+  },
+  {
+    "id": 167,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como testar responsividade?",
+    "answer": "Usando DevTools no modo mobile."
+  },
+  {
+    "id": 168,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é stacking context?",
+    "answer": "A hierarquia utilizada pelo z-index."
+  },
+  {
+    "id": 169,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como centralizar containers horizontalmente?",
+    "answer": "Usando margin: 0 auto."
+  },
+  {
+    "id": 170,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que usar classes semânticas?",
+    "answer": "Para deixar a UI mais clara e fácil de manter."
+  },
+  {
+    "id": 171,
+    "tag": "patterns",
+    "known": false,
+    "question": "O que significa SRP?",
+    "answer": "Single Responsibility Principle: cada módulo deve ter um motivo único para mudar."
+  },
+  {
+    "id": 172,
+    "tag": "patterns",
+    "known": false,
+    "question": "O que é Container/Presenter Pattern?",
+    "answer": "Padrão que separa lógica (container) e UI (presenter)."
+  },
+  {
+    "id": 173,
+    "tag": "patterns",
+    "known": false,
+    "question": "O que faz um Presenter?",
+    "answer": "Renderiza UI e aciona callbacks recebidos via props."
+  },
+  {
+    "id": 174,
+    "tag": "patterns",
+    "known": false,
+    "question": "O que faz um Container?",
+    "answer": "Gerencia lógica, estado, validações e comunicação com API."
+  },
+  {
+    "id": 175,
+    "tag": "hooks",
+    "known": false,
+    "question": "O que deve ter um hook useLogin?",
+    "answer": "Estados, validações, erros e trigger de autenticação."
+  },
+  {
+    "id": 176,
+    "tag": "hooks",
+    "known": false,
+    "question": "Por que isolar lógica em hooks?",
+    "answer": "Para manter UI limpa e lógica reaproveitável."
+  },
+  {
+    "id": 177,
+    "tag": "hooks",
+    "known": false,
+    "question": "O que é handleSubmit?",
+    "answer": "Função que organiza lógica de envio de formulário."
+  },
+  {
+    "id": 178,
+    "tag": "hooks",
+    "known": false,
+    "question": "Por que separar erros por campo?",
+    "answer": "Para fornecer feedback claro e preciso."
+  },
+  {
+    "id": 179,
+    "tag": "hooks",
+    "known": false,
+    "question": "O que é estado derivado?",
+    "answer": "Estado calculado com base em outro estado."
+  },
+  {
+    "id": 180,
+    "tag": "hooks",
+    "known": false,
+    "question": "Por que evitar estados duplicados?",
+    "answer": "Porque causa inconsistências na UI."
+  },
+  {
+    "id": 181,
+    "tag": "hooks",
+    "known": false,
+    "question": "O que faz useCallback?",
+    "answer": "Memoiza funções para evitar re-renderizações."
+  },
+  {
+    "id": 182,
+    "tag": "hooks",
+    "known": false,
+    "question": "O que faz useMemo?",
+    "answer": "Memoiza valores computados caros."
+  },
+  {
+    "id": 183,
+    "tag": "hooks",
+    "known": false,
+    "question": "O que faz useRef?",
+    "answer": "Armazena valores que não causam re-render."
+  },
+  {
+    "id": 184,
+    "tag": "patterns",
+    "known": false,
+    "question": "Por que presenters não devem conter lógica de negócio?",
+    "answer": "Para manter UI simples e previsível."
+  },
+  {
+    "id": 185,
+    "tag": "patterns",
+    "known": false,
+    "question": "Onde ficam hooks compartilhados?",
+    "answer": "Na pasta shared/hooks."
+  },
+  {
+    "id": 186,
+    "tag": "patterns",
+    "known": false,
+    "question": "Por que separar hooks por domínio?",
+    "answer": "Para manter responsabilidades claras."
+  },
+  {
+    "id": 187,
+    "tag": "testing",
+    "known": false,
+    "question": "Por que hooks facilitam testes?",
+    "answer": "Porque isolam lógica em funções puras."
+  },
+  {
+    "id": 188,
+    "tag": "testing",
+    "known": false,
+    "question": "Como testar presenters?",
+    "answer": "Com testes de UI simulando interação real."
+  },
+  {
+    "id": 189,
+    "tag": "testing",
+    "known": false,
+    "question": "Como testar hooks?",
+    "answer": "Usando renderHook da RTL."
+  },
+  {
+    "id": 190,
+    "tag": "patterns",
+    "known": false,
+    "question": "Por que SRP acelera desenvolvimento?",
+    "answer": "Porque reduz acoplamento e efeitos colaterais."
+  },
+  {
+    "id": 191,
+    "tag": "hooks",
+    "known": false,
+    "question": "Quando usar useEffect?",
+    "answer": "Para lidar com efeitos colaterais baseados em estado."
+  },
+  {
+    "id": 192,
+    "tag": "hooks",
+    "known": false,
+    "question": "Quando NÃO usar useEffect?",
+    "answer": "Quando algo pode ser calculado no render."
+  },
+  {
+    "id": 193,
+    "tag": "hooks",
+    "known": false,
+    "question": "Por que validar mínimo antes?",
+    "answer": "Para simplificar lógica e garantir UX mais rápida."
+  },
+  {
+    "id": 194,
+    "tag": "patterns",
+    "known": false,
+    "question": "O que é uma UI pura?",
+    "answer": "UI que apenas recebe props e renderiza."
+  },
+  {
+    "id": 195,
+    "tag": "patterns",
+    "known": false,
+    "question": "Onde fica lógica de autenticação?",
+    "answer": "No container ou no hook — nunca na UI."
+  },
+  {
+    "id": 196,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que memorizar callbacks?",
+    "answer": "Para evitar re-renderizações desnecessárias."
+  },
+  {
+    "id": 197,
+    "tag": "frontend",
+    "known": false,
+    "question": "Quando criar hooks personalizados?",
+    "answer": "Quando lógica se repete e pode ser isolada."
+  },
+  {
+    "id": 198,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que evitar lógica de API dentro do presenter?",
+    "answer": "Para manter SRP e facilitar manutenção."
+  },
+  {
+    "id": 199,
+    "tag": "frontend",
+    "known": false,
+    "question": "Quais são sinais de que um hook tem responsabilidades demais?",
+    "answer": "Excesso de estados, funções e condições."
+  },
+  {
+    "id": 200,
+    "tag": "frontend",
+    "known": false,
+    "question": "Qual o benefício de refatorar UI em presenter?",
+    "answer": "Maior clareza e menor acoplamento."
+  },
+  {
+    "id": 201,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como saber se um componente deve virar presenter?",
+    "answer": "Quando ele possui apenas UI e callbacks via props."
+  },
+  {
+    "id": 202,
+    "tag": "frontend",
+    "known": false,
+    "question": "Quando dividir um hook em dois?",
+    "answer": "Quando ele realiza mais de uma responsabilidade clara."
+  },
+  {
+    "id": 203,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é UI declarativa?",
+    "answer": "UI que descreve o estado, não como manipulá-lo manualmente."
+  },
+  {
+    "id": 204,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que evitar side effects no render?",
+    "answer": "Porque causa inconsistências e re-renders inesperados."
+  },
+  {
+    "id": 205,
+    "tag": "patterns",
+    "known": false,
+    "question": "Qual o papel do domínio na arquitetura?",
+    "answer": "Organizar código por funcionalidade e contexto."
+  },
+  {
+    "id": 206,
+    "tag": "patterns",
+    "known": false,
+    "question": "Como identificar se UI está misturando lógica?",
+    "answer": "Se há validações, regras de negócio ou chamadas de API."
+  },
+  {
+    "id": 207,
+    "tag": "react",
+    "known": false,
+    "question": "Por que presenters usam props e não estados?",
+    "answer": "Para manter previsibilidade e pureza."
+  },
+  {
+    "id": 208,
+    "tag": "react",
+    "known": false,
+    "question": "Por que containers são responsáveis por estados?",
+    "answer": "Porque controlam o fluxo e regras do componente."
+  },
+  {
+    "id": 209,
+    "tag": "patterns",
+    "known": false,
+    "question": "Por que dividir telas em camadas?",
+    "answer": "Para diminuir acoplamento e aumentar reuso."
+  },
+  {
+    "id": 210,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que caracteriza um hook bem desenhado?",
+    "answer": "Poucos estados, responsabilidade clara e API simples."
+  },
+  {
+    "id": 211,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como presenter melhora testabilidade?",
+    "answer": "Ao separar UI pura, testes checam só o visual e interações."
+  },
+  {
+    "id": 212,
+    "tag": "frontend",
+    "known": false,
+    "question": "Como container melhora testabilidade?",
+    "answer": "Ao isolar lógica de negócio testável separadamente."
+  },
+  {
+    "id": 213,
+    "tag": "frontend",
+    "known": false,
+    "question": "Quando criar um custom hook?",
+    "answer": "Quando mesma lógica existe em múltiplos lugares."
+  },
+  {
+    "id": 214,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que evitar retornos enormes em hooks?",
+    "answer": "Dificultam uso e aumentam acoplamento."
+  },
+  {
+    "id": 215,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é API do hook?",
+    "answer": "O conjunto de valores e funções retornado por ele."
+  },
+  {
+    "id": 216,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que presenter deve ser 'burro'?",
+    "answer": "Para ser fácil de entender, testar e substituir."
+  },
+  {
+    "id": 217,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que container deve ser 'inteligente'?",
+    "answer": "Porque concentra regras e lógica externa."
+  },
+  {
+    "id": 218,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é lógica de domínio?",
+    "answer": "Regras que definem o comportamento essencial da feature."
+  },
+  {
+    "id": 219,
+    "tag": "frontend",
+    "known": false,
+    "question": "O que é lógica de apresentação?",
+    "answer": "O que diz respeito apenas à UI."
+  },
+  {
+    "id": 220,
+    "tag": "frontend",
+    "known": false,
+    "question": "Por que usar container/presenter aumenta qualidade?",
+    "answer": "Porque separa UI de regras, reduz bugs e facilita evolução."
+  }
 ]
