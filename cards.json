@@ -3,7 +3,7 @@
         "id": 0,
         "tag": "meta",
         "known": false,
-        "question": "Como usar este deck (0..100)?",
+        "question": "Card 01 -Como usar este deck (0..100)?",
         "answer": "Cada card tem id de 0 a 100. Revele a resposta, marque como conhecido/não conhecido e revise com repetição espaçada. Importe/exporte o JSON para suas ferramentas."
     },
     {
